@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics of Medical Radiation: VCE Option 2.6</title>
+  <!-- SEO Metadata -->
+  <meta name="description" content="A physics study guide explaining how ionizing and non-ionizing radiation are used in medical imaging and therapy. Covers X-ray tubes, CT, MRI, and radioisotope decay.">
+  <meta name="author" content="Selby Thompson & Alexander Dunn">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="index.css">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Left Navigation Directory Sidebar -->
+    <aside class="sidebar" aria-label="Table of Contents">
+      <div>
+        <div class="sidebar-brand">
+          <i class="fa-solid fa-atom"></i> VCE PHYSICS 2.6
+        </div>
+        <nav>
+          <ul class="sidebar-menu">
+            <li><a href="#introduction" class="active"><i class="fa-solid fa-file-invoice"></i> 1.0 Introduction</a></li>
+            <li><a href="#spectrum"><i class="fa-solid fa-chart-bar"></i> 2.0 EM Spectrum</a></li>
+            <li><a href="#tube"><i class="fa-solid fa-microscope"></i> 3.0 X-Ray Tube</a></li>
+            <li><a href="#modalities"><i class="fa-solid fa-images"></i> 4.0 Modalities</a></li>
+            <li><a href="#isotopes"><i class="fa-solid fa-circle-nodes"></i> 5.0 Radioisotopes</a></li>
+            <li><a href="#dose"><i class="fa-solid fa-heart-pulse"></i> 6.0 Dose & Safety</a></li>
+            <li><a href="#conclusion"><i class="fa-solid fa-square-check"></i> 7.0 Conclusion</a></li>
+            <li><a href="#bibliography"><i class="fa-solid fa-list"></i> 8.0 Bibliography</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="sidebar-meta">
+        <div class="sidebar-authors">
+          Prepared by:<br>
+          <strong>Selby Thompson</strong><br>
+          <strong>Alexander Dunn</strong>
+        </div>
+        
+        <div class="theme-toggle-container">
+          <span class="theme-toggle-label">Theme Mode:</span>
+          <button class="theme-btn" id="themeToggleBtn" aria-label="Toggle Theme Mode">Toggle</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Canvas -->
+    <main class="main-content">
+      
+      <!-- Report Header -->
+      <header style="margin-bottom: var(--space-32); border-bottom: 2px solid var(--border-color); padding-bottom: var(--space-24);">
+        <p style="font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: var(--space-8);">
+          VCE Physics Option 2.6 Study Report
+        </p>
+        <h1 style="font-size: 1.8rem; line-height: 1.2; margin-bottom: var(--space-8);">
+          How is Radiation Used to Maintain Human Health?
+        </h1>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0;">
+          An explanation of the physical principles behind medical imaging and radiation therapies.
+        </p>
+      </header>
+
+      <!-- 1.0 Introduction -->
+      <section id="introduction">
+        <h2>1.0 Introduction</h2>
+        <p class="lead">
+          Radiation allows doctors to look inside the body and treat disease without surgery. Different types of radiation interact with tissue in different ways, making them useful for different medical applications.
+        </p>
+        <p>
+          When radiation passes through the body, some tissues absorb it while others let it pass through. By measuring the radiation that exits the body, doctors can create detailed images of internal organs and bones.
+        </p>
+        <p>
+          This website explains how X-rays are produced, how different imaging techniques compare, and how nuclear reactors and cyclotrons produce medical radioisotopes. It also outlines the biological risks of radiation and the safety protocols used to protect patients.
+        </p>
+      </section>
+
+      <!-- 2.0 EM Spectrum Explorer -->
+      <section id="spectrum">
+        <h2>2.0 Classification of the Electromagnetic Spectrum</h2>
+        <p>
+          Electromagnetic waves carry energy through space. We divide the spectrum into ionising and non-ionising radiation depending on how much energy the waves carry.
+        </p>
+        <p>
+          If the photons have enough energy to knock electrons out of atoms, they are called ionising. In human cells, this process can damage DNA and cause cell mutation or death.
+        </p>
+
+        <!-- Timeline Nav -->
+        <div class="spectrum-timeline" role="tablist">
+          <button class="spectrum-band-btn active" data-band="radio" role="tab" aria-selected="true">Radio</button>
+          <button class="spectrum-band-btn" data-band="microwave" role="tab" aria-selected="false">Microwave</button>
+          <button class="spectrum-band-btn" data-band="infrared" role="tab" aria-selected="false">Infrared</button>
+          <button class="spectrum-band-btn" data-band="visible" role="tab" aria-selected="false">Visible</button>
+          <button class="spectrum-band-btn" data-band="ultraviolet" role="tab" aria-selected="false">UV</button>
+          <button class="spectrum-band-btn" data-band="xray" role="tab" aria-selected="false">X-Ray</button>
+          <button class="spectrum-band-btn" data-band="gamma" role="tab" aria-selected="false">Gamma</button>
+        </div>
+
+        <div class="spectrum-indicator-bar" aria-hidden="true">
+          <div class="indicator-nonionizing"></div>
+          <div class="indicator-ionizing"></div>
+        </div>
+
+        <div class="indicator-labels">
+          <span style="color: var(--color-nonionizing);"><i class="fa-solid fa-check"></i> Non-Ionising (&lt; 10 eV)</span>
+          <span style="color: var(--color-ionizing);">Ionising (&gt; 10 eV) <i class="fa-solid fa-triangle-exclamation"></i></span>
+        </div>
+
+        <!-- Detail Panel -->
+        <div class="card" style="padding: var(--space-24);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-12);">
+            <h3 id="emTitle" style="margin-bottom: 0;">Radio Waves</h3>
+            <span id="emTypeBadge" class="tag tag-nonionizing">Non-Ionising</span>
+          </div>
+          <p id="emDesc" style="font-size: 0.95rem; margin-bottom: var(--space-16);">
+            Located at the lowest energy end of the spectrum. Radio waves cannot ionise atoms but are crucial in medicine for MRI scans to flip hydrogen protons in strong magnetic fields.
+          </p>
+          
+          <table class="data-table" style="margin-bottom: 0; font-size: 0.85rem;">
+            <thead>
+              <tr>
+                <th>Wavelength (&lambda;)</th>
+                <th>Frequency (&nu;)</th>
+                <th>Photon Energy (eV)</th>
+                <th>Safety Parameter</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="emWavelength">> 1 m</td>
+                <td id="emFrequency">&lt; 300 MHz</td>
+                <td id="emEnergy">&lt; 1.24 µeV</td>
+                <td id="emSafety">No atomic ionisation risk. Safe for human tissue.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="margin-top: var(--space-16); font-size: 0.9rem;">
+            <strong>Medical Use:</strong> <span id="emApps">Magnetic Resonance Imaging (MRI) RF excitation, wireless telemetry.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3.0 X-Ray Production -->
+      <section id="tube">
+        <h2>3.0 Physics of Diagnostic X-Ray Production</h2>
+        <p>
+          An X-ray tube accelerates electrons using a high voltage and smashes them into a tungsten target. When these fast-moving electrons hit the target, they lose kinetic energy and convert it into electromagnetic radiation.
+        </p>
+        <p>
+          Most of this energy becomes heat, but about one percent is emitted as X-ray photons. These photons are produced by two different processes: Bremsstrahlung (braking radiation) and characteristic X-ray emission.
+        </p>
+
+        <div class="sim-grid">
+          <!-- Canvas Simulator Left -->
+          <div class="canvas-container">
+            <span class="canvas-label">X-RAY TUBE DIAGRAM</span>
+            <canvas id="xrayCanvas"></canvas>
+          </div>
+
+          <!-- Controls Right -->
+          <div class="control-panel">
+            <div class="card" style="padding: var(--space-16); margin-bottom: 0;">
+              <h3 style="margin-bottom: var(--space-16); border-bottom: 1px solid var(--border-color); padding-bottom: var(--space-8);">
+                Operating Controls
+              </h3>
+              
+              <!-- Tube Voltage -->
+              <div style="margin-bottom: var(--space-16);">
+                <div class="control-label-wrapper">
+                  <label for="kvSlider">Tube Voltage (Potential Difference)</label>
+                  <span id="kvValue" style="font-family: var(--font-mono); color: var(--accent-blue);">70 kV</span>
+                </div>
+                <input type="range" id="kvSlider" class="slider-input" min="30" max="120" value="70">
+                <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; margin-bottom: 0;">
+                  Controls the kinetic energy of incident electrons. This determines the penetrating power of the resulting X-rays.
+                </p>
+              </div>
+
+              <!-- Tube Current -->
+              <div style="margin-bottom: var(--space-16);">
+                <div class="control-label-wrapper">
+                  <label for="maSlider">Filament Current (Intensity)</label>
+                  <span id="maValue" style="font-family: var(--font-mono); color: var(--accent-blue);">60 mA</span>
+                </div>
+                <input type="range" id="maSlider" class="slider-input" min="10" max="100" value="60">
+                <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; margin-bottom: 0;">
+                  Controls the temperature of the filament. This determines the quantity of electrons released.
+                </p>
+              </div>
+
+              <!-- Hotspots -->
+              <div style="border-top: 1px solid var(--border-color); padding-top: var(--space-12);">
+                <span style="font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: var(--space-8);">Components to Select:</span>
+                <div class="schematic-hotspots">
+                  <button class="hotspot-btn active" data-hotspot="cathode">1. Filament Cathode</button>
+                  <button class="hotspot-btn" data-hotspot="anode">2. Tungsten Anode</button>
+                  <button class="hotspot-btn" data-hotspot="envelope">3. Vacuum Envelope</button>
+                  <button class="hotspot-btn" data-hotspot="window">4. Beryllium Window</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hotspot Details display -->
+            <div class="card" style="padding: var(--space-12); font-size: 0.85rem; background-color: var(--bg-surface-header);">
+              <h4 id="hotspotTitle" style="color: var(--accent-blue); font-size: 0.9rem; margin-bottom: 4px;">Cathode Filament (Negative Electrode)</h4>
+              <p id="hotspotText" style="margin-bottom: 0; line-height: 1.4;">
+                The cathode is the negative electrode. It contains a tungsten filament that we heat by passing a current through it. Heating the filament gives its electrons enough thermal energy to escape the surface, a process called thermionic emission. The surrounding focusing cup repels the electrons to keep them in a narrow beam.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4.0 Diagnostic Modalities -->
+      <section id="modalities">
+        <h2>4.0 Medical Imaging Techniques</h2>
+        <p>
+          Doctors choose different imaging techniques depending on what part of the body they need to see. Each method relies on a different physical process and has distinct advantages and disadvantages.
+        </p>
+        <p>
+          For example, X-rays are best for looking at dense bones, while MRI is better for viewing soft tissues like the brain and muscles.
+        </p>
+
+        <!-- Tabs selector -->
+        <div class="comparator-tab-grid">
+          <button class="tab-btn active" data-modality="xray" role="tab" aria-selected="true">
+            <img src="images/xray_hand_hologram.png" alt="Hand X-Ray">
+            <h4>X-Ray Radiography</h4>
+          </button>
+          <button class="tab-btn" data-modality="ct" role="tab" aria-selected="false">
+            <img src="images/ct_scanner_modern.png" alt="CT Scan">
+            <h4>Computed Tomography (CT)</h4>
+          </button>
+          <button class="tab-btn" data-modality="mri" role="tab" aria-selected="false">
+            <img src="images/mri_scanner_modern.png" alt="MRI Scanner">
+            <h4>Magnetic Resonance (MRI)</h4>
+          </button>
+        </div>
+
+        <!-- Comparative Layout -->
+        <div class="grid-2">
+          <!-- Text details left -->
+          <div class="card" style="margin-bottom: 0; padding: var(--space-24);">
+            <h3 id="modalName" style="font-size: 1.2rem; margin-bottom: var(--space-8);">X-Ray Radiography</h3>
+            <p id="modalWorks" style="font-size: 0.9rem; margin-bottom: var(--space-16);">
+              An X-ray machine shoots a brief beam of X-rays through the patient's body. Dense bones absorb more X-rays because they contain calcium, which has a high atomic number. Soft tissues let most of the X-rays pass through to the detector. This difference in absorption creates a high-contrast shadow image where bones appear white and soft tissues appear dark.
+            </p>
+            
+            <p style="font-size: 0.85rem; padding: var(--space-12); background-color: var(--bg-surface-header); border-left: 2px solid var(--accent-blue); margin-bottom: var(--space-16);">
+              <strong>Physics Mechanism:</strong> <span id="modalPhysics">This method relies on the photoelectric effect. When an X-ray photon hits an atom with many electrons, like calcium, it is completely absorbed. In contrast, it passes easily through lighter atoms like hydrogen and carbon in muscles.</span>
+            </p>
+
+            <div class="grid-2" style="margin-bottom: 0; gap: var(--space-16);">
+              <div>
+                <h4 style="font-size: 0.85rem; color: var(--color-nonionizing); margin-bottom: var(--space-8);"><i class="fa-solid fa-plus-circle"></i> Advantages</h4>
+                <ul id="modalPros" style="font-size: 0.8rem; list-style-type: square; padding-left: var(--space-16); color: var(--text-secondary);">
+                  <li>Very fast, simple to perform, inexpensive, and highly effective for diagnosing bone fractures.</li>
+                </ul>
+              </div>
+              <div>
+                <h4 style="font-size: 0.85rem; color: var(--color-ionizing); margin-bottom: var(--space-8);"><i class="fa-solid fa-minus-circle"></i> Drawbacks</h4>
+                <ul id="modalCons" style="font-size: 0.8rem; list-style-type: square; padding-left: var(--space-16); color: var(--text-secondary);">
+                  <li>Uses ionising radiation which can damage cells, and provides very poor contrast for soft tissues.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slider comparator right -->
+          <div class="card" style="margin-bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <span style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted); margin-bottom: var(--space-8);">ANATOMICAL WIPE COMPARATOR</span>
+            <div class="slice-frame">
+              <canvas id="anatomyCanvas"></canvas>
+            </div>
+            <input type="range" id="slideCompare" class="slider-input slice-slider" min="0" max="100" value="50" aria-label="Anatomical slider comparison">
+            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: var(--space-8); margin-bottom: 0; text-align: center;">
+              Slide divider to compare MRI soft tissue resolution (left) against the active selected tab (right).
+            </p>
+          </div>
+        </div>
+
+        <!-- Matrix table -->
+        <table class="data-table" style="margin-top: var(--space-32);">
+          <thead>
+            <tr>
+              <th>Imaging Modality</th>
+              <th>Radiation Class</th>
+              <th>Average Effective Dose</th>
+              <th>Relative Cost</th>
+              <th>Acquisition Speed</th>
+              <th>Primary Clinical Targets</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Plain Film Radiography</strong></td>
+              <td>Ionising (Photons)</td>
+              <td>&lt; 0.1 mSv (Extremities)</td>
+              <td>$ (Low)</td>
+              <td>Seconds</td>
+              <td>Skeletal fractures, dental diagnostics, chest infection screens.</td>
+            </tr>
+            <tr>
+              <td><strong>Computed Tomography (CT)</strong></td>
+              <td>Ionising (Rotational X-ray)</td>
+              <td>2.0 - 10.0 mSv</td>
+              <td>$$ (Medium)</td>
+              <td>Minutes</td>
+              <td>Internal bleeding, organ damage, solid tumor location scans.</td>
+            </tr>
+            <tr>
+              <td><strong>Magnetic Resonance (MRI)</strong></td>
+              <td>Non-Ionising (RF & Magnetic)</td>
+              <td>0 mSv</td>
+              <td>$$$ (High)</td>
+              <td>30 - 60 Minutes</td>
+              <td>Brain structures, ligaments, tendons, spinal disc damage.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 5.0 Medical Radioisotopes -->
+      <section id="isotopes">
+        <h2>5.0 Production and Decay of Medical Radioisotopes</h2>
+        <p>
+          Radioisotopes are unstable atoms that decay by emitting radiation. In nuclear medicine, doctors put these isotopes inside the patient's body to trace chemical pathways or target cancer cells.
+        </p>
+        <p>
+          Cyclotrons produce proton-rich isotopes by bombarding a target with high-speed protons, while nuclear reactors produce neutron-rich isotopes by exposing a target to a high flux of neutrons.
+        </p>
+
+        <div class="dashboard-grid">
+          <!-- Sidebar -->
+          <div class="iso-list" role="tablist">
+            <button class="iso-btn active" data-isotope="tc99m" role="tab" aria-selected="true">
+              <span class="iso-btn-name">Technetium-99m</span>
+              <span class="iso-btn-symbol">⁹⁹ᵐTc</span>
+            </button>
+            <button class="iso-btn" data-isotope="f18" role="tab" aria-selected="false">
+              <span class="iso-btn-name">Fluorine-18</span>
+              <span class="iso-btn-symbol">¹⁸F</span>
+            </button>
+            <button class="iso-btn" data-isotope="i131" role="tab" aria-selected="false">
+              <span class="iso-btn-name">Iodine-131</span>
+              <span class="iso-btn-symbol">¹³¹I</span>
+            </button>
+            <button class="iso-btn" data-isotope="co60" role="tab" aria-selected="false">
+              <span class="iso-btn-name">Cobalt-60</span>
+              <span class="iso-btn-symbol">⁶⁰Co</span>
+            </button>
+            
+            <img src="images/medical_isotopes_nuclear.png" alt="Cyclotron lab structure" style="width: 100%; border: 1px solid var(--border-color); border-radius: var(--border-radius); margin-top: var(--space-8); height: auto; object-fit: contain;">
+          </div>
+
+          <!-- Panel Details -->
+          <div class="iso-display-panel">
+            <div class="iso-panel-header">
+              <h3 id="isoTitle" style="margin-bottom: 0;">Technetium-99m</h3>
+              <span id="isoTypeTag" class="tag tag-blue">Gamma emitter</span>
+            </div>
+
+            <table class="data-table" style="font-size: 0.85rem; margin-bottom: var(--space-16);">
+              <tbody>
+                <tr>
+                  <th style="width: 140px;">Physical Half-Life</th>
+                  <td id="isoHalfLife">6.0 hours</td>
+                </tr>
+                <tr>
+                  <th>Primary Emission</th>
+                  <td id="isoDecay">Gamma decay (140 keV)</td>
+                </tr>
+                <tr>
+                  <th>Production Source</th>
+                  <td id="isoSource">Nuclear Reactor (Mo-99 generator)</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div style="margin-top: var(--space-16);">
+              <h4 style="font-size: 0.85rem; margin-bottom: 4px;">Description:</h4>
+              <p id="isoDesc" class="iso-panel-desc">
+                Technetium-99m is used in most nuclear medicine scans because it emits gamma rays that are easy to detect and has a short half-life of about six hours. This provides clear images while limiting the time a patient remains radioactive. The 140 keV gamma rays have enough energy to pass through the body to the detector without causing significant ionisation inside the patient.
+              </p>
+            </div>
+            
+            <div style="margin-top: var(--space-16);">
+              <h4 style="font-size: 0.85rem; margin-bottom: 4px;">Primary Clinical Application:</h4>
+              <p id="isoUses" style="font-weight: 600; color: var(--text-primary);">
+                Myocardial perfusion imaging, bone scans, brain imaging, and thyroid diagnostics.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6.0 Dose & Safety -->
+      <section id="dose">
+        <h2>6.0 Radiation Dosimetry and Biological Safety</h2>
+        <p>
+          We measure the biological effect of radiation on human tissue in Sieverts (Sv). This unit accounts for both the amount of energy absorbed and the type of radiation, since some types cause more cell damage than others.
+        </p>
+        <p>
+          Doctors use the ALARA framework (As Low As Reasonably Achievable) to ensure patients only receive the minimum dose necessary for a successful diagnosis.
+        </p>
+
+        <div class="grid-2">
+          <!-- Meter list -->
+          <div class="card" style="padding: var(--space-20); margin-bottom: 0;">
+            <h3 style="font-size: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: var(--space-8); margin-bottom: var(--space-16);">
+              Effective Dose Reference Scale
+            </h3>
+            
+            <div class="dose-list">
+              <div class="dose-row active" data-dose="extremity">
+                <span class="dose-row-name">Extremity X-Ray</span>
+                <div class="dose-row-bar-container">
+                  <div class="dose-row-bar" style="width: 1.5%;"></div>
+                </div>
+                <span class="dose-row-val">1.5 µSv</span>
+              </div>
+              
+              <div class="dose-row" data-dose="mammogram">
+                <span class="dose-row-name">Mammography</span>
+                <div class="dose-row-bar-container">
+                  <div class="dose-row-bar" style="width: 25%;"></div>
+                </div>
+                <span class="dose-row-val">400 µSv</span>
+              </div>
+
+              <div class="dose-row" data-dose="spine">
+                <span class="dose-row-name">Lumbar Spine X-Ray</span>
+                <div class="dose-row-bar-container">
+                  <div class="dose-row-bar" style="width: 55%;"></div>
+                </div>
+                <span class="dose-row-val">1000 µSv</span>
+              </div>
+
+              <div class="dose-row" data-dose="ctscan">
+                <span class="dose-row-name">Chest/Abdomen CT</span>
+                <div class="dose-row-bar-container">
+                  <div class="dose-row-bar" style="width: 100%;"></div>
+                </div>
+                <span class="dose-row-val">10000 µSv</span>
+              </div>
+            </div>
+            
+            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: var(--space-16); margin-bottom: 0;">
+              Note: 1 Millisievert (mSv) is equal to 1,000 Micro-sieverts (&mu;Sv).
+            </p>
+          </div>
+
+          <!-- Equivalent details -->
+          <div class="card" style="padding: var(--space-20); margin-bottom: 0; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <h3 id="doseNameDisplay" style="font-size: 1.1rem; color: var(--accent-blue); margin-bottom: 4px;">Extremity X-Ray</h3>
+              <p style="font-family: var(--font-mono); font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-16);" id="doseValDisplay">1.5 µSv</p>
+            </div>
+
+            <table class="data-table" style="font-size: 0.8rem; margin-bottom: var(--space-16);">
+              <tbody>
+                <tr>
+                  <th style="width: 180px;">Natural Background Equivalent</th>
+                  <td id="doseBgEquiv">3.5 Hours</td>
+                </tr>
+                <tr>
+                  <th>Transatlantic Flight Equiv.</th>
+                  <td id="doseFlightEquiv">0.2 flights</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div>
+              <span style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">CARCINOGENESIS GENETIC RISK:</span>
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div style="flex: 1; height: 6px; background-color: var(--border-color); border-radius: 3px; position: relative; margin-right: var(--space-16);">
+                  <div id="riskIndicatorDot" style="position: absolute; top: 50%; transform: translate(-50%, -50%); width: 10px; height: 10px; border-radius: 50%; background-color: var(--accent-blue); left: 2%;"></div>
+                </div>
+                <span id="riskLabel" style="font-size: 0.8rem; font-weight: 600; color: var(--color-nonionizing); min-width: 60px; text-align: right;">Negligible</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Risks/Benefits Balance System -->
+        <div class="safety-balance-box">
+          <h3 style="font-size: 1.1rem; margin-bottom: var(--space-8);">The ALARA Optimization Framework</h3>
+          <p style="font-size: 0.9rem; margin-bottom: var(--space-24);">
+            Every medical procedure involving radiation involves a trade-off. We must balance the diagnostic benefits of the scan against the biological risks of exposure. Doctors follow the ALARA principle by minimizing exposure times, increasing shielding, and choosing alternative imaging methods like ultrasound or MRI when possible.
+          </p>
+
+          <div style="display: flex; gap: var(--space-8); margin-bottom: var(--space-24); flex-wrap: wrap;">
+            <span style="font-size: 0.85rem; font-weight: 600; display: inline-flex; align-items: center; margin-right: 8px;">Analysis Perspective:</span>
+            <button class="theme-btn balance-btn" data-balance="unbalanced">Unshielded Hazard Perspective</button>
+            <button class="theme-btn balance-btn" data-balance="balanced">Theoretical Safety Threshold</button>
+            <button class="theme-btn balance-btn active" data-balance="benefit">Optimized Diagnostic Reality</button>
+          </div>
+
+          <!-- Structured Comparison Grid -->
+          <div class="balance-scale-schematic">
+            <!-- Left Side Risks -->
+            <div class="scale-side" id="scalePanLeft">
+              <div class="scale-side-header risks">
+                <i class="fa-solid fa-biohazard"></i> Biological Risks
+              </div>
+              <ul style="font-size: 0.85rem; list-style-type: square; padding-left: var(--space-16); color: var(--text-secondary); display: flex; flex-direction: column; gap: var(--space-8);">
+                <li><strong>Ionisation:</strong> When high-energy radiation hits atoms in human cells, it can knock electrons out of their orbits. This creates reactive free radicals that can disrupt normal cellular chemistry.</li>
+                <li><strong>DNA Damage:</strong> Ionising radiation can directly break the chemical bonds in a DNA molecule. If the cell repairs this damage incorrectly, it can lead to mutations that may cause cancer later in life.</li>
+                <li><strong>Cell Death:</strong> A very high dose of radiation can damage cells so severely that they cannot reproduce and die. This is what causes radiation sickness and tissue damage.</li>
+              </ul>
+            </div>
+
+            <!-- Right Side Benefits -->
+            <div class="scale-side" id="scalePanRight">
+              <div class="scale-side-header benefits">
+                <i class="fa-solid fa-circle-check"></i> Optimization & Benefits
+              </div>
+              <ul style="font-size: 0.85rem; list-style-type: square; padding-left: var(--space-16); color: var(--text-secondary); display: flex; flex-direction: column; gap: var(--space-8);">
+                <li><strong>Accurate Diagnosis:</strong> Allows doctors to see fractures, tumors, and blocked blood vessels clearly without invasive surgery. This helps them plan the correct treatment quickly.</li>
+                <li><strong>Targeted Therapy:</strong> Radioisotopes can deliver highly localized doses of radiation to destroy cancer cells while sparing healthy tissue.</li>
+                <li><strong>Effective Monitoring:</strong> Allows doctors to track whether a treatment is working, such as checking if a tumor is shrinking after chemotherapy.</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div id="scaleBeam" style="display:none;"></div> <!-- dummy element to prevent app.js breaking -->
+        </div>
+      </section>
+
+      <!-- 7.0 Conclusion -->
+      <section id="conclusion">
+        <h2>7.0 Conclusion</h2>
+        <p>
+          Medical radiation is an essential tool in healthcare that allows doctors to diagnose and treat diseases. By selecting the correct type of radiation, doctors can target specific tissues. For instance, they use non-ionising radiation like radio waves in MRI scans to image soft tissues without biological risk. In contrast, they use ionising radiation like X-rays to obtain clear skeletal images.
+        </p>
+        <p>
+          Although ionising radiation can cause DNA damage and cell death, safety frameworks like ALARA minimise these hazards. The diagnostic and therapeutic benefits of early detection and targeted cancer therapies heavily outweigh the managed risks. Ultimately, the careful application of nuclear physics principles continues to play a vital role in maintaining human health.
+        </p>
+      </section>
+
+      <!-- 8.0 Bibliography -->
+      <section id="bibliography">
+        <h2>8.0 Bibliography & References</h2>
+        <div class="glossary-list">
+          <div class="reference-item">
+            Australian Radiation Protection and Nuclear Safety Agency (ARPANSA). (n.d.). <em>Medical Radiation Protection and Dosimetry Guidelines</em>. Retrieved from <a href="https://www.arpansa.gov.au" target="_blank">https://www.arpansa.gov.au</a>
+          </div>
+          <div class="reference-item">
+            International Atomic Energy Agency (IAEA). (n.d.). <em>Production Methods of Radiopharmaceuticals and Medical Isotopes</em>. Retrieved from <a href="https://www.iaea.org" target="_blank">https://www.iaea.org</a>
+          </div>
+          <div class="reference-item">
+            Mayo Clinic. (n.d.). <em>Comparative Analysis: Computed Tomography (CT) and Magnetic Resonance Imaging (MRI) Diagnostics</em>. Retrieved from <a href="https://www.mayoclinic.org/tests-procedures" target="_blank">https://www.mayoclinic.org/tests-procedures</a>
+          </div>
+          <div class="reference-item">
+            Tafti, D., & Maani, C. V. (2023, July 31). <em>X-ray Tube Engineering, Cathode-Anode Physics, and Radiography</em>. StatPearls Publishing. Retrieved from <a href="https://www.ncbi.nlm.nih.gov/books/NBK537046/" target="_blank">https://www.ncbi.nlm.nih.gov/books/NBK537046/</a>
+          </div>
+          <div class="reference-item">
+            World Health Organization (WHO). (2024). <em>Ionising Radiation: Health Effects, Dose Limits, and Protective Frameworks</em>. Retrieved from <a href="https://www.who.int/news-room/fact-sheets/detail/ionizing-radiation-health-effects-and-protective-measures" target="_blank">https://www.who.int/news-room/fact-sheets/detail/ionizing-radiation-health-effects-and-protective-measures</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Page Footer -->
+      <footer>
+        <div>
+          PHYS-2.6 VCE Physics Report &bull; Authors: Selby Thompson, Alexander Dunn
+        </div>
+        <div style="font-size: 0.75rem; color: var(--text-muted); margin: var(--space-8) 0;">
+          Disclaimer: The interactive simulators, models, and structure of this website were AI-generated.
+        </div>
+        <div>
+          VCE Curriculum Guide &bull; &copy; 2026.
+        </div>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
